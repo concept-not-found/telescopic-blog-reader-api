@@ -2,9 +2,12 @@ var express = require('express');
 var redis = require('redis');
 var PileClient = require('piledb');
 
+var redisHost = process.env.REDIS_URL || 'localhost';
+var port = process.env.PORT || 5000;
+
 var application = express();
 
-var database = new PileClient(redis.createClient(), 'blog');
+var database = new PileClient(redis.createClient(redisHost), 'blog');
 
 application.get('/articles', function (request, response) {
   database.getLastReference('articles', function(err, articleKeys) {
@@ -35,9 +38,4 @@ application.get('/articles/:id', function (request, response) {
   });
 });
 
-var server = application.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Blog Reader API http://%s:%s', host, port);
-});
+application.listen(port);
