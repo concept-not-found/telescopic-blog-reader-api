@@ -1,9 +1,9 @@
 {
-  "name": "telescopic-blog-api",
+  "name": "telescopic-blog-reader-api",
   "version": "0.0.0",
-  "description": "blog api backend",
+  "description": "blog reader api backend",
   "main": "server.js",
-  "repository": "concept-not-found/telescopic-blog-api",
+  "repository": "concept-not-found/telescopic-blog-reader-api",
   "keywords": [
     "blog",
     "api"
